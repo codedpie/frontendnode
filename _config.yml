@@ -1,0 +1,16 @@
+title: Frontendnode
+email: sainidhanesh58gamil.com
+description: >-
+  Frontendweb is a coding blog, where you will find HTML, CSS, Javascript, Python tips, tricks and Projects.
+baseurl: "/"
+url: ""
+permalink: :title/
+twitter_username: sainidhanesh5
+github_username:  dhaneshsaini
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag

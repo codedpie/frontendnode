@@ -1,0 +1,56 @@
+---
+title: Contact
+layout: page
+---
+
+<style>
+  form {
+    display: grid;
+    gap: 15px;
+    text-align: center;
+  }
+  input,
+  textarea,
+  button {
+    outline: none;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  input[type=submit] {
+    color: #FFF;
+    background: #2a7ae2;
+  }
+  textarea {
+    height: 50px;
+  }
+</style>
+
+<form method="post" autocomplete="off" name="fen-contact">
+  <input type="text" id="name" name="Name" placeholder="Name*" required />
+  <input type="email" id="email" name="Email" placeholder="Email*" required />
+  <textarea id="message" name="Message" placeholder="Message"></textarea>
+  <input type="submit" />
+  <p id="form_message"></p>
+</form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyEKPZzFuHy8gYLDPbROt0znLzN5U31BvBCgPX1bDfwHkYst9bt-qUg2xgQuXuhmSeYNw/exec'
+  const form = document.forms['fen-contact']
+  const form_message = document.querySelector('#form_message')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(response => {
+        form_message.innerText = 'Query submitted successfully'
+        form_message.style.color = '#2a7ae2'
+        form.reset()
+      })
+      .catch(error => {
+        form_message.innerText = 'query submission unsuccessful'
+        form_message.style.color = '#f00'
+        console.error('Error!', error.message)
+      })
+  })
+</script>
